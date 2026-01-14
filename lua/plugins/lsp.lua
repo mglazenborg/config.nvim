@@ -3,6 +3,13 @@ return {
 	dependencies = {
 		{ "j-hui/fidget.nvim", opts = {} },
 		{ "saghen/blink.cmp", version = "1.x" },
+		{
+			"L3MON4D3/LuaSnip",
+			version = "v2.x",
+			dependencies = {
+				"rafamadriz/friendly-snippets",
+			},
+		},
 
 		"mason-org/mason.nvim",
 		"mason-org/mason-lspconfig.nvim",
@@ -29,10 +36,15 @@ return {
 			},
 		})
 
+		require("luasnip.loaders.from_vscode").lazy_load()
+		require("luasnip").filetype_extend("go", { "go" })
+
 		require("blink.cmp").setup({
+			snippets = { preset = "luasnip" },
 			completion = {
 				menu = { border = "single" },
 				documentation = { auto_show = true, window = { border = "single" } },
+				ghost_text = { enabled = true },
 			},
 			signature = { enabled = true, window = { border = "single" } },
 		})
