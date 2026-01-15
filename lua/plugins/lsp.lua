@@ -40,6 +40,9 @@ return {
 		require("luasnip").filetype_extend("go", { "go" })
 
 		require("blink.cmp").setup({
+			sources = {
+				default = { "lsp", "snippets", "path" },
+			},
 			snippets = { preset = "luasnip" },
 			completion = {
 				menu = { border = "single" },
