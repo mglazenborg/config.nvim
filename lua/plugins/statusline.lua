@@ -15,9 +15,47 @@ return {
 				},
 				sections = {
 					lualine_a = { "mode" },
-					lualine_b = { "diff", "diagnostics" },
-					lualine_c = { { "filename", path = 1 } },
-					lualine_x = { "filetype", "encoding" },
+					lualine_b = { { "branch", icon = "" } },
+					-- lualine_c = { { "filename", path = 1 } },
+					lualine_c = {
+						{
+							"diagnostics",
+							symbols = {
+								error = " ",
+								warn = " ",
+								hint = " ",
+								info = " ",
+							},
+						},
+						{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+						{ "filename", path = 1 },
+					},
+					lualine_x = {
+						{
+							"diff",
+							symbols = {
+								added = " ",
+								modified = " ",
+								removed = " ",
+							},
+						},
+					},
+					lualine_y = {
+						{
+							function()
+								local enc = (vim.bo.fenc ~= "" and vim.bo.fenc) or vim.o.enc
+								if enc and enc:lower() ~= "utf-8" then
+									return enc
+								end
+								return ""
+							end,
+							draw_empty = true,
+						},
+					},
+					lualine_z = {
+						{ "progress", separator = " ", padding = { left = 1, right = 0 } },
+						{ "location", padding = { left = 0, right = 1 } },
+					},
 				},
 			})
 		end,
