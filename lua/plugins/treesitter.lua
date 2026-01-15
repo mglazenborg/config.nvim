@@ -5,7 +5,21 @@ return {
 
 	config = function()
 		require("nvim-treesitter").install({
+			"bash",
+			"diff",
+			"lua",
+			"luadoc",
+			"markdown",
+			"markdown_inline",
+			"vim",
+			"vimdoc",
+			"terraform",
+			"hcl",
+			"yaml",
 			"go",
+			"gomod",
+			"gowork",
+			"gosum",
 		})
 
 		vim.api.nvim_create_autocmd("FileType", {
