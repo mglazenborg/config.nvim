@@ -6,6 +6,9 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				go = { "gofmt" },
+				terraform = { "tofu_fmt" },
+				["terraform-vars"] = { "tofu_fmt" },
+				markdown = { "prettier" },
 			},
 		})
 
