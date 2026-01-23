@@ -33,6 +33,7 @@ return {
 			ensure_installed = {
 				"lua_ls",
 				"gopls",
+				"tofu_ls",
 			},
 		})
 
@@ -45,7 +46,6 @@ return {
 			completion = {
 				menu = { border = "single" },
 				documentation = { auto_show = true, window = { border = "single" } },
-				ghost_text = { enabled = true },
 			},
 			signature = { enabled = true, window = { border = "single" } },
 		})
