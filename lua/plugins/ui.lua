@@ -39,9 +39,9 @@ return {
 						{
 							"diff",
 							symbols = {
-								added = icons.git.Added,
-								modified = icons.git.Modified,
-								removed = icons.git.Removed,
+								added = icons.git.added,
+								modified = icons.git.modified,
+								removed = icons.git.removed,
 							},
 							source = function()
 								local gitsigns = vim.b.gitsigns_status_dict
