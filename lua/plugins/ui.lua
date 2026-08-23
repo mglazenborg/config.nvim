@@ -91,6 +91,15 @@ return {
 		"folke/snacks.nvim",
 		lazy = false,
 		opts = {
+			indent = {
+				enabled = true,
+				animate = {
+					enabled = false,
+				},
+			},
+			input = { enabled = true },
+			notifier = { enabled = true },
+			scope = { enabled = true },
 			statuscolumn = {
 				enabled = true,
 				left = { "mark", "sign" },
@@ -101,6 +110,7 @@ return {
 				},
 				refresh = 50,
 			},
+			words = { enabled = true },
 		},
 	},
 }
