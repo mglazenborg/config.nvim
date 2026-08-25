@@ -56,31 +56,31 @@ return {
 					local buf = ev.buf
 					local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
-					vim.keymap.set("n", "gd", function()
+					local function map(lhs, rhs, desc, opts, mode)
+						vim.keymap.set(
+							mode or "n",
+							lhs,
+							rhs,
+							vim.tbl_extend("force", { buf = buf, desc = "LSP: " .. desc }, opts or {})
+						)
+					end
+
+					map("gd", function()
 						builtin.lsp_definitions({ reuse_win = true })
-					end, { buffer = buf, desc = "LSP: Goto Definition" })
-					vim.keymap.set("n", "gr", function()
+					end, "Goto Definition")
+					map("gr", function()
 						builtin.lsp_references()
-					end, { nowait = true, buffer = buf, desc = "LSP: References" })
-					vim.keymap.set("n", "gI", function()
+					end, "References", { nowait = true })
+					map("gI", function()
 						builtin.lsp_implementations({ reuse_win = true })
-					end, { buffer = buf, desc = "LSP: Goto Implementation" })
-					vim.keymap.set("n", "gy", function()
+					end, "Goto Implementation")
+					map("gy", function()
 						builtin.lsp_type_definitions({ reuse_win = true })
-					end, { buffer = buf, desc = "LSP: Goto T[y]pe Definition" })
-					vim.keymap.set(
-						{ "n", "x" },
-						"<leader>ca",
-						vim.lsp.buf.code_action,
-						{ buffer = buf, desc = "LSP: Code Action" }
-					)
-					vim.keymap.set(
-						{ "n", "x" },
-						"<leader>cc",
-						vim.lsp.codelens.run,
-						{ buffer = buf, desc = "LSP: Rune Codelens" }
-					)
-					vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = buf, desc = "LSP: Rename" })
+					end, "Goto T[y]pe Definition")
+
+					map("<leader>ca", vim.lsp.buf.code_action, "Code Action", nil, { "n", "x" })
+					map("<leader>cc", vim.lsp.codelens.run, "Run Codelens")
+					map("<leader>cr", vim.lsp.buf.rename, "Rename")
 
 					-- Enable inlay hints if LSP supports it
 					if
