@@ -9,6 +9,7 @@ return {
 				styles = {
 					floats = "transparent",
 				},
+				on_colors = function() end,
 				on_highlights = function(hl, c)
 					hl.BlinkCmpMenu = { bg = c.bg_dark }
 					hl.BlinkCmpMenuBorder = { bg = c.bg_dark, fg = c.bg_dark }

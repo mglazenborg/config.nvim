@@ -25,6 +25,16 @@ return {
 				ghost_text = { enabled = false },
 			},
 
+			signature = {
+				enabled = true,
+				trigger = {
+					show_on_keyword = true,
+				},
+				window = {
+					winblend = 10,
+				},
+			},
+
 			sources = {
 				default = { "lsp", "path", "snippets", "buffer" },
 			},
